@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  frontend:
+  backend:
+  database:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - my-custom-network
+
+volumes:
+  pgdata:
+networks:
+  my-custom-network:
+    driver: bridge
