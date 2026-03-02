@@ -2,6 +2,16 @@ version: "3.8"
 services:
   frontend:
   backend:
+    image: ./backend
+    ports:
+      - "5001:5000"
+    environment:
+      DB_HOST: database
+      DB_USER: postgres
+      DB_PASSWORD: password
+      DB_NAME: postgres
+    depends_on:
+      - database
   database:
     image: postgres:16-alpine
     restart: always
